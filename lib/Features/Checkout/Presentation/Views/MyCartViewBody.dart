@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:paymentapp/Features/Checkout/Presentation/Views/paymentDetails.dart';
 import 'package:paymentapp/core/utils/styles.dart';
 
 import 'Widgets/CartInfoItems.dart';
@@ -52,7 +53,9 @@ class MyCardViewBody extends StatelessWidget {
             color: Color(0xFFC6C6C6),
           ),
           const TotalPrice(title: "Total", value: "\$54.00"),
-          CustomButton(onTap: () {}),
+          CustomButton(onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const PaymentDetails()));
+          }),
           const SizedBox(
             height: 12,
           ),
