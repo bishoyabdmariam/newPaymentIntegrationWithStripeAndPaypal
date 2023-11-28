@@ -1,5 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:paymentapp/core/utils/styles.dart';
+
+import 'Widgets/CartInfoItems.dart';
+import 'Widgets/CustomButton.dart';
+import 'Widgets/TotalPrice.dart';
 
 class MyCardViewBody extends StatelessWidget {
   const MyCardViewBody({super.key});
@@ -15,7 +20,11 @@ class MyCardViewBody extends StatelessWidget {
           const SizedBox(
             height: 18,
           ),
-          Image.asset("assets/images/Group6.png"),
+          Expanded(
+            child: Image.asset(
+              "assets/images/Group6.png",
+            ),
+          ),
           const SizedBox(
             height: 25,
           ),
@@ -37,37 +46,18 @@ class MyCardViewBody extends StatelessWidget {
             title: "Shipping",
             value: "\$9.0",
           ),
+          const Divider(
+            height: 34,
+            thickness: 2,
+            color: Color(0xFFC6C6C6),
+          ),
+          const TotalPrice(title: "Total", value: "\$54.00"),
+          CustomButton(onTap: () {}),
+          const SizedBox(
+            height: 12,
+          ),
         ],
       ),
-    );
-  }
-}
-
-class OrderInfoItem extends StatelessWidget {
-  const OrderInfoItem({
-    super.key,
-    required this.title,
-    required this.value,
-  });
-
-  final String title, value;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          title,
-          style: Styles.style18,
-          textAlign: TextAlign.center,
-        ),
-        Spacer(),
-        Text(
-          value,
-          style: Styles.style18,
-          textAlign: TextAlign.center,
-        ),
-      ],
     );
   }
 }
