@@ -10,6 +10,8 @@
 .svn/
 migrate_working_dir/
 
+D:/AndroidStudioProjects/paymentapp/lib/core/utils/apiKeys.dart
+
 # IntelliJ related
 *.iml
 *.ipr
