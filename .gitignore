@@ -10,13 +10,15 @@
 .svn/
 migrate_working_dir/
 
-D:/AndroidStudioProjects/paymentapp/lib/core/utils/apiKeys.dart
 
 # IntelliJ related
 *.iml
 *.ipr
 *.iws
 .idea/
+
+lib/core/utils/apiKeys.dart
+
 
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
