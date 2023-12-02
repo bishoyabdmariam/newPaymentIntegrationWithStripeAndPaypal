@@ -10,7 +10,7 @@ class StripeService {
   Future<PaymentIntentModel> createPaymentIntent(
       PaymentIntentInputModel paymentIntentInputModel) async {
     var response = await apiService.post(
-      body: PaymentIntentInputModel(amount: '1000', currency: "usd").toJson(),
+      body: PaymentIntentInputModel(amount: '1000', currency: "usd" , ).toJson(),
       url: 'https://api.stripe.com/v1/payment_intents',
       token: ApiKeys.secretKey,
     );
@@ -22,7 +22,7 @@ class StripeService {
 
   Future initPaymentSheet({required String clientSecret}) async {
    await Stripe.instance.initPaymentSheet(
-      paymentSheetParameters: SetupPaymentSheetParameters(
+     paymentSheetParameters: SetupPaymentSheetParameters(
         paymentIntentClientSecret: clientSecret,
         merchantDisplayName: "Bishoy",
       ),
