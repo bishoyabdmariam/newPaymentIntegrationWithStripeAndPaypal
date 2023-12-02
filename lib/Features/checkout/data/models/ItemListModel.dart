@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class ItemList {
   List<Item>? items;
 
@@ -15,7 +13,7 @@ class ItemList {
 
   Map<String, dynamic> toJson() {
     return {
-      "items": jsonEncode(this.items),
+      "items": items?.map((item) => item.toJson()).toList(),
     };
   }
 }

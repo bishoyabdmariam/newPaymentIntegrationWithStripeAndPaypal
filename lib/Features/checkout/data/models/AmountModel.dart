@@ -9,19 +9,11 @@ class Order {
     this.details,
   });
 
-  factory Order.fromJson(Map<String, dynamic> json) {
-    return Order(
-      total: json['total']?.toString(),
-      currency: json['currency'],
-      details: json['details'] != null ? OrderDetails.fromJson(json['details']) : null,
-    );
-  }
-
   Map<String, dynamic> toJson() {
     return {
       "total": total,
       "currency": currency,
-      "details": details,
+      "details": details?.toJson(),
     };
   }
 }
@@ -36,14 +28,6 @@ class OrderDetails {
     this.shipping,
     this.shippingDiscount,
   });
-
-  factory OrderDetails.fromJson(Map<String, dynamic> json) {
-    return OrderDetails(
-      subtotal: json['subtotal']?.toString(),
-      shipping: json['shipping']?.toString(),
-      shippingDiscount: json['shipping_discount'] as int?,
-    );
-  }
 
   Map<String, dynamic> toJson() {
     return {
