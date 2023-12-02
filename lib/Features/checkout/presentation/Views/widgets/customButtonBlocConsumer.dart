@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
@@ -25,13 +27,13 @@ class CustomButtonBlocConsumer extends StatelessWidget {
           BlocProvider.of<StripePaymentCubit>(context).makePayment(paymentIntentInputModel: paymentIntentInputModel);
         */
           Order amount = Order(
+            total: "100",
             currency: "USD",
             details: OrderDetails(
               shipping: "0",
               shippingDiscount: 0,
               subtotal: "100",
             ),
-            total: "100",
           );
           ItemList listItem = ItemList(
             items: [
@@ -48,12 +50,12 @@ class CustomButtonBlocConsumer extends StatelessWidget {
                 quantity: 1,
               ),
             ],
-          );
+          );/*
           Navigator.of(context).push(MaterialPageRoute(
             builder: (BuildContext context) => PaypalCheckoutView(
-              sandboxMode: false,
+              sandboxMode: true,
               clientId: ApiKeys.clientIDPayPal,
-              secretKey: ApiKeys.clientIDPayPal,
+              secretKey: ApiKeys.secretKeyPayPal,
               transactions: [
                 {
                   "amount": amount.toJson(),
@@ -68,6 +70,33 @@ class CustomButtonBlocConsumer extends StatelessWidget {
               },
               onError: (error) {
                 print("onError: $error");
+                Navigator.pop(context);
+              },
+              onCancel: () {
+                print('cancelled:');
+                Navigator.pop(context);
+              },
+            ),
+          ));*/
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (BuildContext context) => PaypalCheckoutView(
+              sandboxMode: true,
+              clientId: ApiKeys.clientIDPayPal,
+              secretKey: ApiKeys.secretKeyPayPal,
+              transactions:  [
+                {
+                  "amount": amount.toJson(),
+                  "description": "The payment transaction description.",
+                  "item_list": listItem.toJson(),
+                }
+              ],
+              note: "Contact us for any questions on your order.",
+              onSuccess: (Map params) async {
+                log("onSuccess: $params");
+                Navigator.pop(context);
+              },
+              onError: (error) {
+                log("onError: $error");
                 Navigator.pop(context);
               },
               onCancel: () {
