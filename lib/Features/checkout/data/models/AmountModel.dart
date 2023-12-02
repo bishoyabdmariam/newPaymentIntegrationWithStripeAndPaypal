@@ -1,4 +1,3 @@
-
 class Order {
   String? total;
   String? currency;
@@ -30,7 +29,7 @@ class Order {
 class OrderDetails {
   String? subtotal;
   String? shipping;
-  int shippingDiscount;
+  int? shippingDiscount;
 
   OrderDetails({
     required this.subtotal,
@@ -42,7 +41,7 @@ class OrderDetails {
     return OrderDetails(
       subtotal: json['subtotal'].toString(),
       shipping: json['shipping'].toString(),
-      shippingDiscount: json['shipping_discount'] as int,
+      shippingDiscount: json['shipping_discount'] as int?,
     );
   }
 
@@ -50,7 +49,7 @@ class OrderDetails {
     return {
       "subtotal": subtotal,
       "shipping": shipping,
-      "shippingDiscount": shippingDiscount,
+      "shipping_discount": shippingDiscount,
     };
   }
 }
