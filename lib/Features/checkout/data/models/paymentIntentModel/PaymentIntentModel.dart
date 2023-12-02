@@ -1,4 +1,4 @@
-class PaymentIntent {
+class PaymentIntentModel {
   late String id;
   late String object;
   late int amount;
@@ -39,7 +39,7 @@ class PaymentIntent {
   dynamic transferData;
   dynamic transferGroup;
 
-  PaymentIntent({
+  PaymentIntentModel({
     required this.id,
     required this.object,
     required this.amount,
@@ -81,8 +81,8 @@ class PaymentIntent {
     this.transferGroup,
   });
 
-  factory PaymentIntent.fromJson(Map<String, dynamic> json) {
-    return PaymentIntent(
+  factory PaymentIntentModel.fromJson(Map<String, dynamic> json) {
+    return PaymentIntentModel(
       id: json['id'] as String,
       object: json['object'] as String,
       amount: json['amount'] as int,
