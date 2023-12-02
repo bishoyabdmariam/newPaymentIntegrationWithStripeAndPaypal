@@ -16,6 +16,14 @@ class Order {
       details: json['details'] != null ? OrderDetails.fromJson(json['details']) : null,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "total": total,
+      "currency": currency,
+      "details": details,
+    };
+  }
 }
 
 class OrderDetails {
@@ -35,5 +43,13 @@ class OrderDetails {
       shipping: json['shipping']?.toString(),
       shippingDiscount: json['shipping_discount'] as int?,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "subtotal": subtotal,
+      "shipping": shipping,
+      "shippingDiscount": shippingDiscount,
+    };
   }
 }
